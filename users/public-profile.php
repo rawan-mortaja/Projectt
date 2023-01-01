@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
 
                     <div class="text-center mt-3">
                         <?PHP if (isset($_SESSION['type']) and $_SESSION['type'] == 'Worker') : ?>
-                            <a class="btn btn-success text-white" href="#" role="button" download>Download CV</a>
+                            <a class="btn btn-success text-white" href="<?PHP echo APPURL; ?>/users/user-cvs/<?PHP echo $profile->cv;?>" role="button" download>Download CV</a>
                         <?PHP endif; ?>
                         <h5 class="mt-2 mb-0"><?PHP echo $profile->username;  ?></h5>
 
