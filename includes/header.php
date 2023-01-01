@@ -61,9 +61,9 @@ define("APPURL", "http://localhost:8080/jobboard");
             <ul style="margin-right: -500px" class="site-menu js-clone-nav d-inline d-xl-block ml-0 pl-0">
               <li><a href="<?php echo APPURL; ?>" class="nav-link active">Home</a></li>
               <li><a href="<?php echo APPURL; ?>/about.php">About</a></li>
-
-
               <li><a href="<?php echo APPURL; ?>/contact.php">Contact</a></li>
+              <li><a href="<?php echo APPURL; ?>/gerneral/worker.php">Workers</a></li>
+              <li><a href="<?php echo APPURL; ?>/gerneral/company.php">Companies</a></li>
 
               <?php if (isset($_SESSION['username'])) : ?>
                 <?PHP if (isset($_SESSION['type']) and $_SESSION['type'] == "Company") : ?>
