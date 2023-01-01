@@ -278,7 +278,7 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
             <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categoties</h3>
             <ul class="list-unstyled pl-3 mb-0">
               <?PHP foreach ($allCategories as $category) : ?>
-                <li class="mb-2"><strong class="text-black"> <?PHP echo ucfirst($category->name); ?></li>
+             <a target="_blank" style="text-decoration:none;" href="<?PHP echo APPURL;?>/categories/show-jobs.php?name=<?PHP echo $category->name; ?>" >  <li class="mb-2"><strong class="text-black"> <?PHP echo ucfirst($category->name); ?></li></a>
               <?PHP endforeach; ?>
             </ul>
           </div>
