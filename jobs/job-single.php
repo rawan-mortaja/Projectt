@@ -52,7 +52,7 @@ if (isset($_POST['submit_appliaction'])) {
     ':job_id' => $job_id,
     ':job_title' => $job_title,
     ':company_id' => $company_id,
-    ':company_image' =>$company_image
+    ':company_image' => $company_image
   ]);
 
   echo "<script>alert('Application sent successfully')</script>";
@@ -88,6 +88,15 @@ $checking_for_application->execute();
 $checking_for_saved_job = $conn->query("SELECT * FROM saved_jobs WHERE worker_id = '$_SESSION[id]' AND job_id = '$id'");
 $checking_for_saved_job->execute();
 // echo $checking_for_saved_job->rowCount();
+
+
+//getting categories 
+
+$categories = $conn->query("SELECT * FROM catogories ");
+$categories->execute();
+
+$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
+
 
 ?>
 <!-- HOME -->
@@ -263,7 +272,16 @@ $checking_for_saved_job->execute();
               <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?PHP echo APPURL; ?>/jobs/job-single.php?id=<?php $row->id; ?>" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
             </div>
           </div>
+          
 
+          <div class="bg-light p-3 border rounded mb-4 mt-4">
+            <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categoties</h3>
+            <ul class="list-unstyled pl-3 mb-0">
+              <?PHP foreach ($allCategories as $category) : ?>
+                <li class="mb-2"><strong class="text-black"> <?PHP echo ucfirst($category->name); ?></li>
+              <?PHP endforeach; ?>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -283,7 +301,7 @@ $checking_for_saved_job->execute();
         <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
           <a href="<?PHP echo APPURL; ?>/jobs/job-single.php?id=<?PHP echo $job->id; ?>"></a>
           <div class="job-listing-logo">
-            <img src="../users/user-images/<?PHP echo $job->company_image;?>" alt="Image" class="img-fluid">
+            <img src="../users/user-images/<?PHP echo $job->company_image; ?>" alt="Image" class="img-fluid">
           </div>
 
           <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
