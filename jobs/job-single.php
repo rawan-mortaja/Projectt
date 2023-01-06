@@ -26,6 +26,8 @@ if (isset($_GET['id'])) {
   $job_count->execute();
 
   $job_num = $job_count->fetch(PDO::FETCH_OBJ);
+}else{
+  header("location: ".APPURL."/404.php");
 }
 
 
