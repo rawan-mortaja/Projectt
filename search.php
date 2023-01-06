@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
         $insert->execute([
             ':keyword' => $job_title,
         ]);
-        
-        
-        
+
+
+
         $search = $conn->query("SELECT * FROM jobs  WHERE job_title LIKE '%$job_title%'
         AND job_region LIKE '%$job_region%' AND job_type LIKE '%$job_type%' AND status = 1");
         $search->execute();
@@ -66,13 +66,7 @@ if (isset($_POST['submit'])) {
 
 <section class="site-section">
     <div class="container">
-        <?PHP if (isset($_SESSION['type']) and $_SESSION['type'] == "Company" and $_SESSION['id'] == $id) : ?>
-            <div class="row mb-5 justify-content-center">
-                <div class="col-md-7 text-center">
-                    <h2 class="section-title mb-2">Jobs Posted by this Company </h2>
-                </div>
-            </div>
-        <?PHP endif; ?>
+
         <ul class="job-listings mb-5">
             <?PHP if (count($searchRes) > 0) : ?>
                 <?PHP foreach ($searchRes as $oneJob) : ?>
