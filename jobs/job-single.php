@@ -76,18 +76,16 @@ if (isset($_POST['submit_appliaction'])) {
 // }
 
 
-//checking for worker application
 
-$checking_for_application = $conn->query("SELECT * FROM job_applications WHERE worker_id = $_SESSION[id] AND job_id = '$id' ");
-$checking_for_application->execute();
+if (isset($_SESSION['id'])) {
+  //checking for worker application
+  $checking_for_application = $conn->query("SELECT * FROM job_applications WHERE worker_id = '$_SESSION[id]' AND job_id = '$id' ");
+  $checking_for_application->execute();
 
-// echo $checking_for_application->rowCount();
-
-
-//Checking for saved jobs
-$checking_for_saved_job = $conn->query("SELECT * FROM saved_jobs WHERE worker_id = '$_SESSION[id]' AND job_id = '$id'");
-$checking_for_saved_job->execute();
-// echo $checking_for_saved_job->rowCount();
+  //Checking for saved jobs
+  $checking_for_saved_job = $conn->query("SELECT * FROM saved_jobs WHERE worker_id = '$_SESSION[id]' AND job_id = '$id'");
+  $checking_for_saved_job->execute();
+}
 
 
 //getting categories 
@@ -261,6 +259,7 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
               <li class="mb-2"><strong class="text-black">Salary: </strong> <?PHP echo $row->salary; ?></li>
               <li class="mb-2"><strong class="text-black">Gender: </strong> <?PHP echo $row->gender; ?></li>
               <li class="mb-2"><strong class="text-black">Application Deadline: </strong> <?PHP echo date('M', strtotime($row->application_deadline)) . ',' . date('d', strtotime($row->application_deadline)) . ',' . date('Y', strtotime($row->application_deadline)); ?></li>
+              <li class="mb-2"><strong class="text-black">Job Category: </strong> <?PHP echo ucfirst($row->job_category); ?></li>
             </ul>
           </div>
 
@@ -272,13 +271,15 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
               <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?PHP echo APPURL; ?>/jobs/job-single.php?id=<?php $row->id; ?>" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
             </div>
           </div>
-          
+
 
           <div class="bg-light p-3 border rounded mb-4 mt-4">
             <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categoties</h3>
             <ul class="list-unstyled pl-3 mb-0">
               <?PHP foreach ($allCategories as $category) : ?>
-             <a target="_blank" style="text-decoration:none;" href="<?PHP echo APPURL;?>/categories/show-jobs.php?name=<?PHP echo $category->name; ?>" >  <li class="mb-2"><strong class="text-black"> <?PHP echo ucfirst($category->name); ?></li></a>
+                <a target="_blank" style="text-decoration:none;" href="<?PHP echo APPURL; ?>/categories/show-jobs.php?name=<?PHP echo $category->name; ?>">
+                  <li class="mb-2"><strong class="text-black"> <?PHP echo ucfirst($category->name); ?></li>
+                </a>
               <?PHP endforeach; ?>
             </ul>
           </div>
