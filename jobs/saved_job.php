@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 
     //grapping saved_jobs
     $saved_jobs = $conn->prepare("SELECT jobs.id AS id , jobs.company_image AS company_image , jobs.company_name 
-    AS company_name , jobs.job_region As job_region , jobs.job_type AS job_type ,jobs.job_title AS job_title , jobs.company_image AS company_image
+    AS company_name , jobs.job_region As job_region , jobs.job_type AS job_type ,jobs.job_title AS job_title
      FROM jobs JOIN saved_jobs ON jobs.id = saved_jobs.job_id WHERE worker_id ='$id'");
     $saved_jobs->execute();
 
