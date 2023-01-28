@@ -81,6 +81,7 @@ define("APPURL", "http://localhost:8080/jobboard");
                     <a class="dropdown-item" href="<?php echo APPURL; ?>/users/update-profile.php?upd_id=<?PHP echo $_SESSION['id'] ?>">Update profile</a>
                     <?PHP if (isset($_SESSION['type']) and $_SESSION['type'] == 'Worker') : ?>
                       <a class="dropdown-item" href="<?php echo APPURL; ?>/jobs/saved_job.php?id=<?PHP echo $_SESSION['id'] ?>">Saved Jobs</a>
+                      <a class="dropdown-item" href="<?php echo APPURL; ?>/users/applied-jobs.php?id=<?PHP echo $_SESSION['id'] ?>">Applied Jobs</a>
                     <?PHP endif; ?>
                     <?PHP if (isset($_SESSION['type']) and $_SESSION['type'] == 'Company') : ?>
                       <a class="dropdown-item" href="<?php echo APPURL; ?>/users/show-applicants.php?id=<?PHP echo $_SESSION['id'] ?>">Show applicants</a>
