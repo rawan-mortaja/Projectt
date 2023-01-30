@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
     if ($login->rowCount() > 0) {
       if (password_verify($password, $select['mypassword'])) {
-
+        $_SESSION['id'] = $select['id'];
         $_SESSION['adminname'] = $select['adminname'];
 
         $_SESSION['email'] = $select['email'];
