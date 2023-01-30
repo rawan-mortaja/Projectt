@@ -21,7 +21,7 @@ define("ADMINURL", "http://localhost:8080/jobboard/admin-panel");
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="<?PHP echo ADMINURL; ?>">LOGO</a>
+                <a class="navbar-brand" href="<?PHP echo ADMINURL; ?>">JobBoard</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,6 +41,9 @@ define("ADMINURL", "http://localhost:8080/jobboard/admin-panel");
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?PHP echo ADMINURL; ?>/jobs-admins/show-jobs.php" style="margin-left: 20px;">Jobs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP echo ADMINURL; ?>/reports/reports.php" style="margin-left: 20px;">Reports</a>
                             </li>
                         <?PHP endif; ?>
                         </ul>
